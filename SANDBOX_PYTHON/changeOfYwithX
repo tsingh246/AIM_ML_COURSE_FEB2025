@@ -1,0 +1,30 @@
+def f(x):
+    return x**2
+x=[7,6,8,18]
+result=[]
+def y(f,x):
+    for i in  x:
+        input=i
+        #print(input)
+        result.append(f(input))
+    
+    return result
+
+
+
+#print(y(f,x))       
+
+diff_array=[]
+def change(x,y):
+    l=len(x)
+    for i in range(l):
+        if i==0:
+            diff_array.append(y[i]/x[i])
+        else:
+            diff_array.append((y[i]-y[i-1])/(x[i]-x[i-1]))
+    return diff_array
+
+
+print(x)
+print(y(f,x))
+print(change(x,y(f,x)))
