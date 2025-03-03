@@ -89,5 +89,39 @@ def cubrt(n):
 
                 
 
-print(sqrt(100))
+#print(sqrt(100))
 #print(cubrt(1000))
+def swap(x,y):
+    y= x^y
+    x=y^x
+    y=y^x
+    print(x,y)
+
+
+#print(swap(10,20))
+
+
+#print(x,y)
+arr1=[10,20,30,40]
+def shift_arr(arr,k):
+    for i in range(len(arr)-k):
+         x=  arr[i] + arr[i+k]
+         arr[i] = x-arr[i]
+         arr[i+k] = x-arr[i]
+         #print(arr)
+    return arr
+
+
+
+'''print(arr1)
+print("############")
+print(shit_arr(arr1,1))
+print("------------------")
+'''
+print(arr1)
+print("############")
+arr2=shift_arr(arr1,1)
+
+print(arr2)
+
+
