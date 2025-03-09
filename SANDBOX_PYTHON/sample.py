@@ -102,7 +102,8 @@ def swap(x,y):
 
 
 #print(x,y)
-arr1=[10,20,30,40]
+# circular shift array to left
+arr1=[10,230,890,40]
 def shift_arr(arr,k):
     for i in range(len(arr)-k):
          x=  arr[i] + arr[i+k]
@@ -118,10 +119,23 @@ print("############")
 print(shit_arr(arr1,1))
 print("------------------")
 '''
-print(arr1)
+#print(arr1)
 print("############")
-arr2=shift_arr(arr1,1)
+#arr2=shift_arr(arr1,3)
 
-print(arr2)
+#print(arr2)
 
+def reverse_array(arr):
+    k=len(arr)
+    for i in range(k):
+        if (i<k-1-i):
+                               
+                arr[k-1-i]=arr[i] ^ arr[k-1-i]
+                arr[i]=arr[k-1-i] ^ arr[i]
+                arr[k-1-i]=arr[k-1-i] ^ arr[i]
+        else:
+            break
+    
+    print(arr)
 
+reverse_array(arr1)

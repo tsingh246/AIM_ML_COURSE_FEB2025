@@ -36,5 +36,19 @@ def tell_temp(calibration_data, current):
     
     return temperature
 
-print(tell_temp(calibration_data,4))
+#print(tell_temp(calibration_data,4))
 print(tell_temp(calibration_data,2.1))
+'''def tell_temp1(calibration_data, current):
+    
+    delta_x=calibration_data[1][0] - calibration_data[0][0]
+    delta_y= calibration_data[1][1] - calibration_data[0][1]
+    y1,y2=calibration_data[0][1],calibration_data[1][1]
+    x1,x2=calibration_data[0][0],calibration_data[1][0]
+
+    m= (y2-y1)/(x2-x1)
+
+    c= y1-m*x1
+    temperature=(m*current) + c
+    
+    return temperature
+'''
