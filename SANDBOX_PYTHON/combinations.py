@@ -12,7 +12,7 @@ for i in range(len(list)):
     for j in range(i+1,len(list)):
         out_list_2.append(list[i]+list[j])
         #print(list[i]+list[j])
-print(out_list_2)
+print(out_list_2,len(out_list_2))
 # for k= 3
 
 out_list_3=[]
@@ -22,7 +22,7 @@ for i in range(len(list)):
         for k in range(j+1,len(list)):
             out_list_3.append(list[i]+list[j]+list[k])
         #print(list[i]+list[j])
-print(out_list_3)
+print(out_list_3,len(out_list_3))
 
 # for k= 4
 
@@ -34,6 +34,6 @@ for i in range(len(list)):
             for l in range(k+1,len(list)):
                 out_list_4.append(list[i]+list[j]+list[k]+list[l])
         #print(list[i]+list[j])
-print(out_list_4)
+print(out_list_4,len(out_list_4))
     
 
