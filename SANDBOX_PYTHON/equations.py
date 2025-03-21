@@ -49,7 +49,8 @@ def list_op(l1,l2,op,remove_zero):
                     out.append(l1[i] - l2[i])
             else:
                 out.append(l1[i] - l2[i])
-    out.append(l1[len(l1) -1] - l2[len(l1) -1])
+        if l1[len(l1) -1] - l2[len(l1) -1] ==0:
+            out.append(0)
     return out
 #print(list_op([-16.0, 12.0, -96.0],[-9.0, 12.0, -96.0],"-",True))
 ip3=[[4, 2, 1, 5],[1, -3, -1, 3],[3, 2, 2, 10]]
@@ -69,16 +70,17 @@ def solve_equations1(ip):
         for j in range(1,len(ip)):
             print(0,j)
             inner_len=len(ip[0])
-            m= ip[0][inner_len -2] * ip[1][inner_len -2]
+            m= ip[0][inner_len -2] * ip[j][inner_len -2]
             m1=m / ip[0][inner_len -2]
-            m2= m / ip[1][inner_len -2] 
-            print(m1,m2)
+            m2= m / ip[j][inner_len -2] 
+            print(m,m1,m2)
             print(list_scaler_op(ip[0],"*",m1))
-            print(list_scaler_op(ip[1],"*",m2))
-            new_input= list_op(list_scaler_op(ip[0],"*",m1),list_scaler_op(ip[1],"*",m2),"-",True)
+            print(list_scaler_op(ip[j],"*",m2))
+            new_input= list_op(list_scaler_op(ip[0],"*",m1),list_scaler_op(ip[j],"*",m2),"-",True)
             print(new_input)
             after_elimination.append(new_input)
+        print(after_elimination)
         solve_equations1(after_elimination) 
-solve_equations1(ip2)
+solve_equations1(ip3)
 
 
