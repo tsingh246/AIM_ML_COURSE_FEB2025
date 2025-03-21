@@ -1,7 +1,7 @@
 '''
 
 For equation:
-    4*x + 2y + z = 5
+    4x + 2y + z = 5
     x - 3y - z = 3
     3x + 2y + 2z = 10
 
@@ -16,17 +16,7 @@ result = solve_equations(eqns)
 result
 
 '''
-#solver for 1 variable 4x=10 -- > [[4,10]]
 
-ip=[[4,10]]
-
-def solve_equations1(ip):
-    if len(ip)==1:
-        return [ip[0][len(ip) -2] / ip[0][len(ip) -1]]
-
-#print(solve_equations1(ip))
-
-#solver for 1 variable 4x=10 -- > [[4,10]]
 
 #scaler with list
 def list_scaler_op(list,op,n):
@@ -39,6 +29,7 @@ def list_scaler_op(list,op,n):
 
 #print(list_op([4,10],"*",2))            
 
+# Substrat a list from another element by element and remozeroes from resulting array output.
 def list_op(l1,l2,op,remove_zero):
     out=[]
     if op=="-":
@@ -58,29 +49,40 @@ ip2=[[2,3,13],[3,2,12]]
 #ip2=[[4,-3,24],[3,-4,32]]
 ip1=[[4,10]]
 
-def solve_equations1(ip):
-    output=[]
+def eliminate_variable(ip):
+    global output
     after_elimination=[]
+    output=[]
     if len(ip)==1:
         output.append([ip[0][len(ip) -2] / ip[0][len(ip) -1]])
-        print(output)
+        print("eliminate_variable ********* ",output)
+        
 
     else:
         
         for j in range(1,len(ip)):
-            print(0,j)
+            #print(0,j)
             inner_len=len(ip[0])
             m= ip[0][inner_len -2] * ip[j][inner_len -2]
             m1=m / ip[0][inner_len -2]
             m2= m / ip[j][inner_len -2] 
-            print(m,m1,m2)
-            print(list_scaler_op(ip[0],"*",m1))
-            print(list_scaler_op(ip[j],"*",m2))
+            #print(m,m1,m2)
+            #print(list_scaler_op(ip[0],"*",m1))
+            #print(list_scaler_op(ip[j],"*",m2))
             new_input= list_op(list_scaler_op(ip[0],"*",m1),list_scaler_op(ip[j],"*",m2),"-",True)
-            print(new_input)
+            #print(new_input)
             after_elimination.append(new_input)
         print(after_elimination)
-        solve_equations1(after_elimination) 
-solve_equations1(ip3)
+        eliminate_variable(after_elimination) 
+    return output
+#eliminate_variable(ip3)
 
+# ip3=[[4, 2, 1, 5],[1, -3, -1, 3],[3, 2, 2, 10]]
+def solve_equations(ip):
+    result=[]
+    
+    for i in range(1):
+        output= eliminate_variable(ip)
+        print("solve_equations ******** ",output)
 
+solve_equations(ip3)
