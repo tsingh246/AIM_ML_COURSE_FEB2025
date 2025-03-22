@@ -74,15 +74,22 @@ def eliminate_variable(ip):
             after_elimination.append(new_input)
         print(after_elimination)
         eliminate_variable(after_elimination) 
-    return output
+    return output[0]
 #eliminate_variable(ip3)
 
 # ip3=[[4, 2, 1, 5],[1, -3, -1, 3],[3, 2, 2, 10]]
 def solve_equations(ip):
     result=[]
     
-    for i in range(1):
-        output= eliminate_variable(ip)
-        print("solve_equations ******** ",output)
+    for i in range(len(ip)):
+        modified_ip=ip[:len(ip) - i]
+        print(modified_ip)
+        if len(result) ==0:
+            output= eliminate_variable(modified_ip)
+            result.append(output)
+        else:
+            print("modufy arrays",modified_ip)
+        
+    return result
 
-solve_equations(ip3)
+print(solve_equations(ip3))
