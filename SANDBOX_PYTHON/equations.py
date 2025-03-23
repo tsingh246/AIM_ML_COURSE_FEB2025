@@ -86,11 +86,12 @@ def solve_equations(ip):
     for i in range(len(ip)):
         modified_ip=ip[:len(ip) - i]
         print(i," ------ ",modified_ip)
+        print(i," ------ ",result)
         if len(result) ==0:
             output= eliminate_variable(modified_ip)
             result.append(output)
         else:
-            print("modufy arrays",modified_ip)
+            #print("modufy arrays",modified_ip)
             arr1=[]
             for i in range(len(modified_ip)):
                 c=0
@@ -114,4 +115,4 @@ def solve_equations(ip):
         
     return result
 
-print(solve_equations(ip2))
+print(solve_equations(ip3))
