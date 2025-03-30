@@ -47,6 +47,8 @@ def list_op(l1,l2,op,remove_zero):
 #ip3=[[1,-2,3,9],[-1,3,-1,-6],[2,-5,5,17]]
 ip3=[[4, 2, 1, 5],[1, -3, -1, 3],[3, 2, 2, 10]]
 ip2=[[2,3,13],[3,2,12]]
+#ip2=[[1,0,10],[1,1,15]]
+
 #ip2=[[4,-3,24],[3,-4,32]]
 ip1=[[4,10]]
 
@@ -55,18 +57,23 @@ def eliminate_variable(ip):
     after_elimination=[]
     output=[]
     if len(ip)==1:
-        output.append([ip[0][len(ip) -2] / ip[0][len(ip) -1]])
+           
+        #output.append([ip[0][len(ip) -2] / ip[0][len(ip) -1]])
+           output.append([ip[0][1] / ip[0][0]])
         #print("eliminate_variable ********* ",output)
-        
-
     else:
         
         for j in range(1,len(ip)):
             #print(0,j)
             inner_len=len(ip[0])
             m= ip[0][inner_len -2] * ip[j][inner_len -2]
-            m1=m / ip[0][inner_len -2]
-            m2= m / ip[j][inner_len -2] 
+            if m==0:
+                m1=0
+                m2=0
+            else:
+
+                m1=m / ip[0][inner_len -2]
+                m2= m / ip[j][inner_len -2] 
             #print(m,m1,m2)
             #print(list_scaler_op(ip[0],"*",m1))
             #print(list_scaler_op(ip[j],"*",m2))
@@ -74,7 +81,7 @@ def eliminate_variable(ip):
             #print(new_input)
             after_elimination.append(new_input)
         #print(after_elimination)
-        eliminate_variable(after_elimination) 
+        r=eliminate_variable(after_elimination) 
     return output[0]
 #eliminate_variable(ip3)
 
@@ -115,4 +122,4 @@ def solve_equations(ip):
         
     return result
 
-print(solve_equations(ip3))
+print(solve_equations(ip2))
