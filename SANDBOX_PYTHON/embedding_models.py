@@ -1,5 +1,6 @@
 from sentence_transformers import SentenceTransformer
 import numpy as np
+
 def cos_similarity(a,b):
     dot_product= np.dot(a,b)
     magnitude_a = np.linalg.norm(a)
