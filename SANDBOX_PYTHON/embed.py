@@ -1,4 +1,4 @@
-from sentence_transformers import SentenceTransformer
+import ollama
 import numpy as np
 
 def cos_similarity(a,b):
@@ -11,15 +11,15 @@ def cos_similarity(a,b):
 def euc_dist(a,b):
     return np.linalg.norm(a - b)
 
-model_name = "all-MiniLM-L6-v2" # Or another model from Hugging Face
-model = SentenceTransformer(model_name)
+def get_embedding(text, model="nomic-embed-text"):
+    response = ollama.embeddings(
+        model=model,
+        prompt=text
+    )
+    embedding = response['embedding']
+    return np.array(embedding)
 
 
-
-'''text1 = "India is a great country"
-text2 = "Bharat ek mahan desh hai"
-text3 = "Indian ocean."
-'''
 text_arr=["India is a great country",
           "Bharat ek mahan desh hai",
           "Indian ocean."
@@ -27,14 +27,8 @@ text_arr=["India is a great country",
 
 embeddings=[]
 for t in text_arr:
-    embeddings.append(model.encode(t))
+    embeddings.append(get_embedding(t))
 
-#print(embeddings)
-'''
-embedding1 = model.encode(text1)
-embedding2 = model.encode(text2)
-embedding3 = model.encode(text3)
-'''
 def text_similarity(func,embeddings):
     text_similarity=[]
     for i in range(len(embeddings)):
@@ -42,17 +36,8 @@ def text_similarity(func,embeddings):
             text_similarity.append((func(embeddings[i],embeddings[j])).tolist())
     return text_similarity
 
-'''distance1=euc_dist(embedding1 , embedding2)
-distance2=euc_dist(embedding1 , embedding3)
-distance3=euc_dist(embedding2 , embedding3)
-'''
 print(text_similarity(euc_dist,embeddings))
 
 print("*****************************************")
 
 print(text_similarity(cos_similarity,embeddings))
-
-
-
-
-
