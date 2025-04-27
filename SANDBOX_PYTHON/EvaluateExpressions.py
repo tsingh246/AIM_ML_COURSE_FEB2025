@@ -76,28 +76,3 @@ for op in op_seq:
         
         print(op_arr,n_arr)
 
-
-
-
-
-'''
-
-
-    for op in op_seq:
-        #print(op)
-        for i in range(len(op_arr)):
-            if op==op_arr[i]:
-                #print("found",op_arr[i],i)
-                var1=n_arr[i]
-                var2=n_arr[i+1]
-                val=exec_op(var1,var2,op_arr[i])
-                replacement=str(var1)+op_arr[i]+str(var2)
-                input_str=input_str.replace(replacement,str(val))
-                print(input_str)
-                op_arr= op_arr[1:]
-                n_arr=n_arr[2:]
-                n_arr.insert(0,val)
-                print(op_arr,n_arr)
-                break
-
-'''
