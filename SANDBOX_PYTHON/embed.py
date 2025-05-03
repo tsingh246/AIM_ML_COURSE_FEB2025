@@ -20,9 +20,9 @@ def get_embedding(text, model="nomic-embed-text"):
     return np.array(embedding)
 
 
-text_arr=["India is a great country",
-          "Bharat ek mahan desh hai",
-          "Indian ocean."
+text_arr=["Apple",
+          "Orange",
+          "iphone."
           ]
 
 embeddings=[]
